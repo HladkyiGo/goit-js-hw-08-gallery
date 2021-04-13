@@ -87,20 +87,20 @@ const createGalleryItem = ({ preview, original, description }) =>
   />
 </a>
 </li>`;
-const galleryMarkup = images.reduce(
+const galleryCreatEl = images.reduce(
   (acc, item) => acc + createGalleryItem(item),
   ""
   
 );
-console.log(galleryMarkup);
-refs.gallery.insertAdjacentHTML("afterbegin", galleryMarkup);
+console.log(galleryCreatEl)
+refs.gallery.insertAdjacentHTML("afterbegin", galleryCreatEl);
 refs.image.classList.add("gallery__image");
 
-refs.gallery.addEventListener("click", onGalleryClick);
-refs.btn.addEventListener("click", onClickHandlerClose);
+refs.gallery.addEventListener("click", galleryClick);
+refs.btn.addEventListener("click", clickHandlerClose);
 refs.modal.addEventListener("click", closeLightbox);
 
-function onGalleryClick(e) {
+function galleryClick(e) {
   e.preventDefault();
   if (e.target.nodeName !== 'IMG') {
     return;
@@ -113,7 +113,7 @@ function onGalleryClick(e) {
   window.addEventListener("keyup", clickKey);
 }
 
-function onClickHandlerClose(e) {
+function clickHandlerClose(e) {
   e.preventDefault(); 
   refs.lightbox.classList.remove("is-open");
   refs.lightbox__image.src = '';
@@ -123,12 +123,12 @@ function onClickHandlerClose(e) {
 
 function closeLightbox(event) {
   if (event.target === event.currentTarget) {
-    onClickHandlerClose();
+    clickHandlerClose();
   }
 }
 
 function clickKey(event) {
   if (event.code === "Escape") {
-    onClickHandlerClose();
+    clickHandlerClose();
   }
 }
