@@ -114,7 +114,7 @@ function galleryClick(e) {
 }
 
 function clickHandlerClose(e) {
-  e.preventDefault(); 
+ 
   refs.lightbox.classList.remove("is-open");
   refs.lightbox__image.src = '';
   refs.lightbox__image.alt = '';
